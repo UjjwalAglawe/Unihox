@@ -15,10 +15,10 @@ const JWT_SECRET = process.env.JWT_SECRET;
 app.use(express.json());
 
 app.use(cors({
-    origin: [`${process.env.FRONT_END}`],
+    origin: ["*"],
     methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    // credentials: true
 }));
 
 const transporter = nodemailer.createTransport({
