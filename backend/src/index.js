@@ -15,10 +15,10 @@ const JWT_SECRET = process.env.JWT_SECRET;
 app.use(express.json());
 
 app.use(cors({
-    origin: ["*"],
+    origin: ['https://unihox-2f4d.vercel.app'],
     methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    // credentials: true
+    credentials: true
 }));
 
 const transporter = nodemailer.createTransport({
