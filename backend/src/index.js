@@ -15,7 +15,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 app.use(express.json());
 
 app.use(cors({
-    origin: ['http://localhost:5173'],
+    origin: [`${process.env.FRONT_END}`],
     methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
