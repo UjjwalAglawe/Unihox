@@ -18,7 +18,7 @@ function Signup() {
 
   const handleSignup = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/signup`, formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/signup`, formData);
       alert(response.data.message);
       setUserInfo(response.data.user);
       setOtpSent(true);
