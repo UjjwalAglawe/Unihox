@@ -10,24 +10,12 @@
         {
             "src": "/api/(.*)",
             "dest": "/src/index.js",
-            "headers": [
-                {
-                    "key": "Access-Control-Allow-Credentials",
-                    "value": "true"
-                },
-                {
-                    "key": "Access-Control-Allow-Origin",
-                    "value": "https://unihox-2f4d.vercel.app"
-                },
-                {
-                    "key": "Access-Control-Allow-Methods",
-                    "value": "GET,POST,PUT,DELETE,OPTIONS"
-                },
-                {
-                    "key": "Access-Control-Allow-Headers",
-                    "value": "Content-Type, Authorization"
-                }
-            ]
+            "headers": {
+                "Access-Control-Allow-Credentials": "true",
+                "Access-Control-Allow-Origin": "https://unihox-2f4d.vercel.app",
+                "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type, Authorization"
+            }
         },
         {
             "src": "/(.*)",
