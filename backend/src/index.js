@@ -20,9 +20,10 @@ app.use(cors({
 
 app.use(express.json());
 
-app.get('/test', (req, res) => {
-    res.send('CORS test successful!');
+app.get('/', (req, res) => {
+    res.send('Front Page!');
 });
+
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -80,6 +81,10 @@ const sendOTP = async (user_id, email) => {
         console.log(e);
     }
 }
+
+app.get('/test', (req, res) => {
+    res.send('CORS test successful!');
+});
 
 app.post("/api/v1/signin/password", async (req, res) => {
     try {
