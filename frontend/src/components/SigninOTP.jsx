@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import yoga from "../assets/yoga.jpg"
 import { useNavigate } from "react-router-dom";
+axios.defaults.withCredentials = true;
+axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 
 const SigninOTP = () => {

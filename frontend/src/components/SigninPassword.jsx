@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import yoga from "../assets/yoga.jpg"
+import yoga from "../assets/yoga.jpg";
+axios.defaults.withCredentials = true;
+axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 function SigninPassword() {
   const [formData, setFormData] = useState({ email: "", password: "" });
