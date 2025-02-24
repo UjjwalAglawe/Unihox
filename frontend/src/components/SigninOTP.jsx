@@ -14,7 +14,16 @@ const SigninOTP = () => {
 
   const requestOTP = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/signin/request-otp`, { email });
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/signin/request-otp`, 
+        { email },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          timeout: 10000
+        }
+      );
       setOtpSent(true);
       setMessage(response.data.message);
     } catch (error) {
@@ -24,8 +33,21 @@ const SigninOTP = () => {
 
   const verifyOTP = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/signin/otp`, { email, otp });
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/signin/otp`, 
+        { email, otp },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          timeout: 10000
+        }
+      );
       setMessage(response.data.message);
+      if(response.data.token) {
+        localStorage.setItem('token', response.data.token); 
+        navigate("/dashboard");
+      }
       if(response.data.token)
       {
         navigate("/dashboard");
