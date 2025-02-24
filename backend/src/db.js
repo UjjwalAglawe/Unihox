@@ -2,7 +2,15 @@ import mongoose, {model,Schema}  from 'mongoose';
 import dotenv from "dotenv";
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL, {
+    poolSize: 10, // Adjust pool size as needed
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(() => {
+    console.log("Connected to MongoDB");
+}).catch((err) => {
+    console.error("MongoDB connection error:", err);
+})
 
 const UserSchema=new Schema({
     name: {type:String,unique:true},
