@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL, {
-    poolSize: 10, // Adjust pool size as needed
+    poolSize: 10,
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {

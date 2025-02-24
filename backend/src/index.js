@@ -101,26 +101,31 @@ app.get('/test', (req, res) => {
 
 app.post("/api/v1/signin/password", async (req, res) => {
     // res.send('Test');
+    console.log("inside pasword");
+    
     try {
         const { email, password } = req.body;
         
-
+        
         if (!email || !password) {
             return res.status(400).json({ message: "Email and password are required" });
         }
-
+        console.log("before finding user");
+        
         const user = await userModel.findOne({ email });
+        console.log("After finding user");
         
         if (!user) {
             return res.status(403).json({ message: "User not found" });
         }
-
+        
         const passwordMatch = await bcrypt.compare(password, user.password);
-
+        
         if (!passwordMatch) {
             return res.status(403).json({ message: "Invalid password" });
         }
         
+        console.log("genrating token");
         const token = jwt.sign({ id: user._id.toString() }, JWT_SECRET);
 
 
