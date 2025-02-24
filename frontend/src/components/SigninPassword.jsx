@@ -23,7 +23,9 @@ function SigninPassword() {
           timeout: 10000
         }
       );
+      console.log("Tokens is",response.data.token);
       if (response.data.token) {
+        
         localStorage.setItem('token', response.data.token);
       }
       
