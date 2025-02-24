@@ -20,6 +20,9 @@ app.use(cors({
 
 app.use(express.json());
 
+app.get('/test', (req, res) => {
+    res.send('CORS test successful!');
+});
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",

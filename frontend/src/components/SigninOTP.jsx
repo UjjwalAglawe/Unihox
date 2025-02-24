@@ -14,7 +14,7 @@ const SigninOTP = () => {
 
   const requestOTP = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/signin/request-otp`, { email });
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/signin/request-otp`, { email });
       setOtpSent(true);
       setMessage(response.data.message);
     } catch (error) {
@@ -24,7 +24,7 @@ const SigninOTP = () => {
 
   const verifyOTP = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/signin/otp`, { email, otp });
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/signin/otp`, { email, otp });
       setMessage(response.data.message);
       if(response.data.token)
       {
