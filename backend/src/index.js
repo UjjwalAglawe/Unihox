@@ -100,7 +100,7 @@ app.get('/test', (req, res) => {
 });
 
 app.post("/api/v1/signin/password", async (req, res) => {
-    res.send('Test');
+    // res.send('Test');
     try {
         const { email, password } = req.body;
         
