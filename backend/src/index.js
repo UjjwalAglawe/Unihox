@@ -13,10 +13,10 @@ const app = express();
 
 
 const corsOptions = {
-    origin: ['https://unihox-2f4d.vercel.app', 'https://unihox.vercel.app'],
+    origin: '*', // Allow all origins temporarily
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
+    credentials: false, // Must be false when using origin: '*'
     preflightContinue: false,
     optionsSuccessStatus: 204
 };

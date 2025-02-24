@@ -2,8 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import yoga from "../assets/yoga.jpg";
-axios.defaults.withCredentials = true;
-axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 function SigninPassword() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -19,10 +17,10 @@ function SigninPassword() {
         `${import.meta.env.VITE_API_URL}/api/v1/signin/password`,
         formData,
         {
-          withCredentials: true,
           headers: {
             'Content-Type': 'application/json'
-          }
+          },
+          timeout: 10000
         }
       );
       if (response.data.token) {

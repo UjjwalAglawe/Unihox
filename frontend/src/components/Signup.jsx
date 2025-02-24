@@ -3,8 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaFacebook, FaGoogle, FaApple } from "react-icons/fa";
 import yoga from "../assets/yoga.jpg"
-axios.defaults.withCredentials = true;
-axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 function Signup() {
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
