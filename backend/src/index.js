@@ -10,13 +10,21 @@ import nodemailer from "nodemailer";
 
 dotenv.config();
 const app = express();
-const JWT_SECRET = process.env.JWT_SECRET;
-app.use(cors({
-    origin: ['https://unihox-2f4d.vercel.app/'],
-    methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+const corsOptions = {
+    origin: ['https://unihox-2f4d.vercel.app'],
+    methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-}));
+    credentials: true,
+};
+app.use(cors(corsOptions)); 
+
+// app.use(cors({
+//     origin: ['https://unihox-2f4d.vercel.app/'],
+//     methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true
+// }));
+const JWT_SECRET = process.env.JWT_SECRET;
 
 app.use(express.json());
 
@@ -346,6 +354,7 @@ app.options('*', (req, res) => {
 
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
+export default app;
+// app.listen(port, () => {
+//     console.log(`Server running on port ${port}`);
+// });
