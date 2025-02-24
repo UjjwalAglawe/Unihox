@@ -17,7 +17,7 @@ const Dashboard = () => {
     const fetchDashboardData = async () => {
       try {
         const token = localStorage.getItem("authorization");
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/dashboard`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/dashboard`, {
           headers: {
             authorization: token,
           },

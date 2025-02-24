@@ -6,13 +6,13 @@ import jwt from 'jsonwebtoken';
 import dotenv from "dotenv";
 import { userMiddleware } from "./middleware.js";
 import cors from "cors";
-import nodemailer from "nodemailer";  // Add this import
+import nodemailer from "nodemailer";  
 
 dotenv.config();
 const app = express();
 const JWT_SECRET = process.env.JWT_SECRET;
 app.use(cors({
-    origin: ['https://unihox-2f4d.vercel.app'],
+    origin: ['https://unihox-2f4d.vercel.app/'],
     methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
@@ -24,7 +24,7 @@ app.use(express.json());
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
-    secure: true, // true for port 465, false for other ports
+    secure: true, 
     auth: {
         user: process.env.Email,
         pass: process.env.Pass,

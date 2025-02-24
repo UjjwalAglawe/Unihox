@@ -18,7 +18,7 @@ function Signup() {
 
   const handleSignup = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/signup`, formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/signup`, formData);
       alert(response.data.message);
       setUserInfo(response.data.user);
       setOtpSent(true);
@@ -29,7 +29,7 @@ function Signup() {
 
   const verifyOtp = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/verifyOTP`,
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/verifyOTP`,
         {
           otp,
           userId: userInfo._id,

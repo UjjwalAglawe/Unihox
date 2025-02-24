@@ -14,7 +14,7 @@ function SigninPassword() {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v1/signin/password`,
+        `${import.meta.env.VITE_API_URL}api/v1/signin/password`,
         formData
       );
       alert("Login successful!");
