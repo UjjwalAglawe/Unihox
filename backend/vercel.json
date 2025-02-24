@@ -2,18 +2,36 @@
     "version": 2,
     "builds": [
         {
-            "src": "src/index.js", 
+            "src": "src/index.js",
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
-            "src": "/api/(.*)", 
-            "dest": "/src/index.js" 
+            "src": "/api/(.*)",
+            "dest": "/src/index.js",
+            "headers": [
+                {
+                    "key": "Access-Control-Allow-Credentials",
+                    "value": "true"
+                },
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "https://unihox-2f4d.vercel.app"
+                },
+                {
+                    "key": "Access-Control-Allow-Methods",
+                    "value": "GET,POST,PUT,DELETE,OPTIONS"
+                },
+                {
+                    "key": "Access-Control-Allow-Headers",
+                    "value": "Content-Type, Authorization"
+                }
+            ]
         },
         {
-            "src": "/(.*)", 
-            "dest": "/src/index.js" 
+            "src": "/(.*)",
+            "dest": "/src/index.js"
         }
     ]
 }

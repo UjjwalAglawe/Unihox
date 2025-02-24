@@ -15,12 +15,33 @@ function SigninPassword() {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/signin/password`,
-        formData
+        formData,
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
       );
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+      }
+      
       alert("Login successful!");
       navigate("/dashboard");
     } catch (error) {
-      alert("Invalid credentials");
+      // More detailed error handling
+      if (error.response) {
+        // The server responded with a status code outside of 2xx
+        alert(error.response.data.message || "Invalid credentials");
+      } else if (error.request) {
+        // The request was made but no response was received
+        alert("No response from server. Please try again.");
+      } else {
+        // Something happened in setting up the request
+        alert("Error occurred. Please try again.");
+      }
+      console.error("Login error:", error);
     }
   };
 

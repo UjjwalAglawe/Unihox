@@ -10,13 +10,18 @@ import nodemailer from "nodemailer";
 
 dotenv.config();
 const app = express();
+
+
 const corsOptions = {
-    origin: ['https://unihox-2f4d.vercel.app'],
-    methods: ['GET', 'POST', 'OPTIONS'],
+    origin: ['https://unihox-2f4d.vercel.app', 'https://unihox.vercel.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 204
 };
-app.use(cors(corsOptions)); 
+
+app.use(cors(corsOptions));
 
 // app.use(cors({
 //     origin: ['https://unihox-2f4d.vercel.app/'],
@@ -347,10 +352,10 @@ app.get("/api/v1/dashboard", userMiddleware, (req, res) => {
 });
 
 
-app.options('*', (req, res) => {
-    console.log('Preflight request received');
-    res.sendStatus(200);
-});
+// app.options('*', (req, res) => {
+//     console.log('Preflight request received');
+//     res.sendStatus(200);
+// });
 
 
 const port = process.env.PORT || 3000;
